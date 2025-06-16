@@ -103,6 +103,7 @@ def compare_roles(roles_from_customer_docs, roles_from_rbac_config):
             role_customer_doc = roles_from_customer_docs[name]
             if role_rbac_config["description"] != role_customer_doc["description"]:
                 message = (
+                    f"{name}:\n"
                     f"Description from rbac-config (1) and Customer Documentation (2) is not same.\n"
                     f"\t(1) {role_rbac_config['description']}\n"
                     f"\t(2) {role_customer_doc['description']}\n"
@@ -113,6 +114,7 @@ def compare_roles(roles_from_customer_docs, roles_from_rbac_config):
                 != role_customer_doc["platform_default"]
             ):
                 message = (
+                    f"{name}:\n"
                     f"'Platform default' tag from rbac-config (1) and Customer Documentation (2) is not same.\n"
                     f"(1) {role_rbac_config['platform_default']}\n"
                     f"(2) {role_customer_doc['platform_default']}\n"
@@ -120,6 +122,7 @@ def compare_roles(roles_from_customer_docs, roles_from_rbac_config):
                 logger.warning(message)
             if role_rbac_config["admin_default"] != role_customer_doc["admin_default"]:
                 message = (
+                    f"{name}:\n"
                     f"'Admin default' tag from rbac-config (1) and Customer Documentation (2) is not same.\n"
                     f"(1) {role_rbac_config['admin_default']}\n"
                     f"(2) {role_customer_doc['admin_default']}\n"
